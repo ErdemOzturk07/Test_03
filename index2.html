@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Webinar | Elevate Your Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#3b82f6',
+                        neon: '#00f5ff',
+                        darkblue: '#1e40af',
+                        softblue: '#1e3a8a',
+                        softnavy: '#172554'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .neon-glow {
+            text-shadow: 0 0 8px rgba(0, 245, 255, 0.6);
+        }
+        
+        .gradient-border {
+            position: relative;
+        }
+        
+
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 0.5rem;
+            padding: 2px;
+            background: linear-gradient(45deg, #3b82f6, #00f5ff);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            border: 3px solid transparent; /* border thickness */
+            border-radius: 16px;            /* rounded corners */
+            background: linear-gradient(90deg, #3b82f6, #00f5ff);
+            background-origin: border-box;
+            background-clip: border-box, padding-box;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5rem;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.2);
+        }
+        
+        .lead-magnet {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+        
+        .download-btn:hover .arrow {
+            transform: translateX(3px);
+        }
+        
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .youtube-carousel {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .youtube-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .video-card {
+            min-width: 300px;
+            scroll-snap-align: start;
+        }
+        
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+        }
+        
+        .video-border {
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .section-transition {
+            transition: all 0.5s ease;
+        }
+        
+        /* Softer section transitions */
+        .section-gradient-1 {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .section-gradient-2 {
+            background: linear-gradient(to bottom, #1e293b 0%, #151F3B 100%);
+        }
+        
+        .section-gradient-3 {
+            background: linear-gradient(to bottom, #151F3B 0%, #121b3a 100%);
+        }
+        
+        .section-gradient-4 {
+            background: linear-gradient(to bottom, #121b3a 0%, #0f172a 100%);
+        }
+        
+        /* FAQ Styles */
+        .faq-item {
+            border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            padding: 1.5rem 0;
+            position: relative;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #00f5ff;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #94a3b8;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: auto;
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-primary border-b border-gray-800 py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-bolt text-neon text-2xl"></i>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent to-neon">DIGITALPULSE</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#webinar" class="text-gray-300 hover:text-neon transition">Webinar</a>
+                <a href="#services" class="text-gray-300 hover:text-neon transition">Services</a>
+                <a href="#resources" class="text-gray-300 hover:text-neon transition">Resources</a>
+                <a href="#benefits" class="text-gray-300 hover:text-neon transition">Benefits</a>
+                <a href="#faq" class="text-gray-300 hover:text-neon transition">FAQ</a>
+            </div>
+            <button class="md:hidden text-gray-300">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Now taller -->
+    <section id="webinar" class="hero-section px-4">
+        <div class="hero-bg-pattern"></div>
+        <div class="container mx-auto max-w-6xl hero-content">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <span class="text-neon neon-glow">Master</span> Digital Marketing in 2023
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Join our exclusive webinar and discover the cutting-edge strategies that are transforming businesses this year. Learn from industry leaders and take your marketing to the next level.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-gradient-to-r from-accent to-neon text-primary font-bold py-3 px-8 rounded-lg hover:opacity-90 transition shadow-lg shadow-blue-500/20">
+                            Register Now <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                        <button class="border border-neon text-neon font-bold py-3 px-8 rounded-lg hover:bg-neon hover:text-primary transition">
+                            <i class="fas fa-play mr-2"></i> Watch Trailer
+                        </button>
+                    </div>
+                    <div class="mt-12 flex items-center space-x-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-neon" alt="Attendee">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-neon" alt="Attendee">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-10 h-10 rounded-full border-2 border-neon" alt="Attendee">
+                        </div>
+                        <div>
+                            <p class="text-gray-300 text-sm">Join <span class="font-bold text-neon">1,200+</span> marketers already registered</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 mt-10 lg:mt-0">
+                    <div class="rounded-lg">
+                        <div class="video-container">
+                            <!-- Replace with your actual VSL embed code -->
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-center space-x-2">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <span class="text-gray-300 text-sm">Rated 5.0 by 850+ attendees</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 section-gradient-1 section-transition">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Our <span class="text-neon">Digital Marketing</span> Services
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We specialize in helping businesses grow through strategic digital marketing solutions tailored to your unique needs.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 hover:border-neon transition duration-300">
+                    <div class="w-14 h-14 bg-darkblue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-neon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SEO Optimization</h3>
+                    <p class="text-gray-300">
+                        Dominate search rankings with our data-driven SEO strategies that drive organic traffic and qualified leads.
+                    </p>
+                </div>
+                
+                <div class="bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 hover:border-neon transition duration-300">
+                    <div class="w-14 h-14 bg-darkblue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-ad text-neon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Paid Advertising</h3>
+                    <p class="text-gray-300">
+                        Maximize ROI with our precision-targeted PPC campaigns across Google, Facebook, and LinkedIn.
+                    </p>
+                </div>
+                
+                <div class="bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 hover:border-neon transition duration-300">
+                    <div class="w-14 h-14 bg-darkblue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-envelope-open-text text-neon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Email Marketing</h3>
+                    <p class="text-gray-300">
+                        Convert subscribers into customers with our automated email sequences and segmentation strategies.
+                    </p>
+                </div>
+                
+                <div class="bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 hover:border-neon transition duration-300">
+                    <div class="w-14 h-14 bg-darkblue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-neon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Social Media Management</h3>
+                    <p class="text-gray-300">
+                        Build brand authority and engagement with our strategic social media content and community management.
+                    </p>
+                </div>
+                
+                <div class="bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 hover:border-neon transition duration-300">
+                    <div class="w-14 h-14 bg-darkblue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-pencil-alt text-neon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Content Marketing</h3>
+                    <p class="text-gray-300">
+                        Attract and retain customers with our high-converting content strategies across all digital channels.
+                    </p>
+                </div>
+                
+                <div class="bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 hover:border-neon transition duration-300">
+                    <div class="w-14 h-14 bg-darkblue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-funnel-dollar text-neon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Conversion Optimization</h3>
+                    <p class="text-gray-300">
+                        Turn more visitors into customers with our data-backed CRO strategies and A/B testing frameworks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section id="resources" class="py-20 px-4 section-gradient-2 section-transition">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Digital Marketing Resources" 
+                         class="rounded-xl shadow-2xl border-2 border-neon/50 hover:border-neon transition duration-300">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Get Our <span class="text-neon">Free</span> Digital Marketing Playbook
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Download our exclusive 50-page guide packed with actionable strategies, templates, and frameworks to accelerate your marketing results.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-neon mr-3"></i>
+                            <span>SEO Checklist for 2023</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-neon mr-3"></i>
+                            <span>Content Calendar Template</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-neon mr-3"></i>
+                            <span>Advertising Campaign Blueprint</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-neon mr-3"></i>
+                            <span>Social Media Posting Schedule</span>
+                        </li>
+                    </ul>
+                    <button class="download-btn bg-gradient-to-r from-accent to-neon text-primary font-bold py-3 px-8 rounded-lg hover:opacity-90 transition shadow-lg shadow-blue-500/20 flex items-center">
+                        Download Now <i class="fas fa-arrow-down ml-3 arrow transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 px-4 section-gradient-3 section-transition">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    What You'll <span class="text-neon">Gain</span> From Our Webinar
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    This isn't just another marketing webinar. Here's exactly what you'll walk away with:
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="benefit-card bg-secondary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 transition duration-300">
+                    <div class="text-neon text-4xl mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Proven Strategies</h3>
+                    <p class="text-gray-300">
+                        Learn battle-tested marketing frameworks that generate real results, not just theory.
+                    </p>
+                </div>
+                
+                <div class="benefit-card bg-secondary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 transition duration-300">
+                    <div class="text-neon text-4xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Actionable Tools</h3>
+                    <p class="text-gray-300">
+                        Get access to our proprietary templates, checklists, and software recommendations.
+                    </p>
+                </div>
+                
+                <div class="benefit-card bg-secondary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 transition duration-300">
+                    <div class="text-neon text-4xl mb-4">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Data Insights</h3>
+                    <p class="text-gray-300">
+                        Understand the key metrics that actually matter and how to track them effectively.
+                    </p>
+                </div>
+                
+                <div class="benefit-card bg-secondary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 transition duration-300">
+                    <div class="text-neon text-4xl mb-4">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Expert Guidance</h3>
+                    <p class="text-gray-300">
+                        Direct access to our team of marketing veterans with 50+ years combined experience.
+                    </p>
+                </div>
+                
+                <div class="benefit-card bg-secondary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 transition duration-300">
+                    <div class="text-neon text-4xl mb-4">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Networking</h3>
+                    <p class="text-gray-300">
+                        Connect with other ambitious marketers and potential collaborators.
+                    </p>
+                </div>
+                
+                <div class="benefit-card bg-secondary/80 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50 transition duration-300">
+                    <div class="text-neon text-4xl mb-4">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bonus Resources</h3>
+                    <p class="text-gray-300">
+                        Exclusive discounts on our premium tools and services for attendees only.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos Carousel Section -->
+    <section class="py-20 px-4 section-gradient-4 section-transition">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Watch Our <span class="text-neon">Latest Videos</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Explore our YouTube content where we dive deep into digital marketing strategies and success stories.
+                </p>
+            </div>
+            
+            <div class="relative">
+                <div class="carousel-container youtube-carousel flex overflow-x-auto pb-8 gap-6 scroll-smooth" id="videoCarousel">
+                    <!-- Video 1 -->
+                    <div class="video-card flex-shrink-0">
+                        <div class="video-border">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/9xwazD5SyVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mt-4">SEO Masterclass 2023</h3>
+                        <p class="text-gray-400 text-sm">Learn the latest SEO techniques that actually work</p>
+                    </div>
+                    
+                    <!-- Video 2 -->
+                    <div class="video-card flex-shrink-0">
+                        <div class="video-border">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/7k7e7C7NXQE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mt-4">Facebook Ads That Convert</h3>
+                        <p class="text-gray-400 text-sm">Our proven framework for high-converting ads</p>
+                    </div>
+                    
+                    <!-- Video 3 -->
+                    <div class="video-card flex-shrink-0">
+                        <div class="video-border">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/videoseries?list=PLvJ_dXFSpd2tjUTuISFg3c1QaDBfQbQ3U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mt-4">Content Marketing Playlist</h3>
+                        <p class="text-gray-400 text-sm">Complete guide to content that drives results</p>
+                    </div>
+                    
+                    <!-- Video 4 -->
+                    <div class="video-card flex-shrink-0">
+                        <div class="video-border">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/lJIrF4YjHfQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mt-4">Email Marketing Secrets</h3>
+                        <p class="text-gray-400 text-sm">Double your open rates with these tactics</p>
+                    </div>
+                    
+                    <!-- Video 5 -->
+                    <div class="video-card flex-shrink-0">
+                        <div class="video-border">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/GVRkF2Tnwtw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mt-4">Analytics Deep Dive</h3>
+                        <p class="text-gray-400 text-sm">What metrics actually matter for growth</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary/80 backdrop-blur-sm rounded-full w-10 h-10 flex items-center justify-center shadow-lg border border-gray-700/50 hover:bg-secondary transition" onclick="scrollCarousel(-1)">
+                    <i class="fas fa-chevron-left text-neon"></i>
+                </button>
+                <button class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary/80 backdrop-blur-sm rounded-full w-10 h-10 flex items-center justify-center shadow-lg border border-gray-700/50 hover:bg-secondary transition" onclick="scrollCarousel(1)">
+                    <i class="fas fa-chevron-right text-neon"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideal Client Section -->
+    <section class="py-20 px-4 section-gradient-1 section-transition">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Is This Webinar <span class="text-neon">Right</span> For You?
+                </h2>
+                <p class="text-xl text-gray-300">
+                    This training is perfect for marketers who meet these criteria:
+                </p>
+            </div>
+            
+            <div class="bg-primary/80 backdrop-blur-sm rounded-xl p-8 border border-gray-800/50">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-neon flex items-center">
+                            <i class="fas fa-check-circle mr-3"></i> You Should Attend If...
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neon mt-1 mr-3"></i>
+                                <span>You're serious about scaling your business or marketing results</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neon mt-1 mr-3"></i>
+                                <span>You're willing to implement what you learn</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neon mt-1 mr-3"></i>
+                                <span>You value data-driven strategies over guesswork</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neon mt-1 mr-3"></i>
+                                <span>You're ready to invest time (if not money) into marketing</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-red-400 flex items-center">
+                            <i class="fas fa-times-circle mr-3"></i> Not For You If...
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-red-400 mt-1 mr-3"></i>
+                                <span>You're looking for "get rich quick" schemes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-red-400 mt-1 mr-3"></i>
+                                <span>You're not willing to put in consistent effort</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-red-400 mt-1 mr-3"></i>
+                                <span>You expect results without implementation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-red-400 mt-1 mr-3"></i>
+                                <span>You're satisfied with your current marketing results</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-xl mb-6">
+                        If this sounds like you, we'd love to have you join us!
+                    </p>
+                    <button class="bg-gradient-to-r from-accent to-neon text-primary font-bold py-4 px-10 rounded-lg hover:opacity-90 transition shadow-lg shadow-blue-500/30 text-lg">
+                        Reserve Your Spot Now <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4 section-gradient-2 section-transition">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Frequently Asked <span class="text-neon">Questions</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Find answers to common questions about our webinar and digital marketing services.
+                </p>
+            </div>
+            
+            <div class="bg-secondary/80 backdrop-blur-sm rounded-xl p-8 border border-gray-800/50">
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3 class="text-xl font-bold">What will I learn from this webinar?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our webinar covers the most effective digital marketing strategies for 2023, including SEO, paid advertising, content marketing, email marketing, and conversion optimization. You'll learn actionable frameworks that you can implement immediately to grow your business.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3 class="text-xl font-bold">How long is the webinar?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The live webinar runs for approximately 90 minutes, including a 30-minute Q&A session where you can get your specific questions answered by our experts.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3 class="text-xl font-bold">Is there a recording if I can't attend live?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! All registered attendees will receive a recording of the webinar within 24 hours after the live event, along with all the presentation materials and bonus resources.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3 class="text-xl font-bold">What's the cost to attend?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The webinar is completely free to attend. We offer this as value to help marketers and business owners succeed with digital marketing. There may be optional premium upgrades available during the webinar, but there's no obligation to purchase anything.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3 class="text-xl font-bold">Do I need any prior marketing experience?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Not at all! We've designed the content to be valuable for complete beginners as well as experienced marketers looking to update their skills. We'll cover fundamental concepts before diving into more advanced strategies.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3 class="text-xl font-bold">Will there be opportunities to work with you after the webinar?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we'll share information about our premium services during the webinar, and all attendees will receive exclusive offers not available to the general public. However, there's absolutely no pressure - the webinar itself is packed with valuable content you can implement on your own.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-xl mb-6 text-gray-300">
+                        Still have questions? We're happy to help!
+                    </p>
+                    <button class="border-2 border-neon text-neon font-bold py-3 px-8 rounded-lg hover:bg-neon hover:text-primary transition">
+                        Contact Our Team <i class="fas fa-envelope ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary border-t border-gray-800/50 py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-bolt text-neon text-2xl"></i>
+                        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent to-neon">DIGITALPULSE</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Cutting-edge digital marketing strategies to grow your business in 2023 and beyond.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#webinar" class="text-gray-400 hover:text-neon transition">Webinar</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-neon transition">Services</a></li>
+                        <li><a href="#resources" class="text-gray-400 hover:text-neon transition">Resources</a></li>
+                        <li><a href="#benefits" class="text-gray-400 hover:text-neon transition">Benefits</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-neon transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-neon mr-2"></i>
+                            <span class="text-gray-400">hello@digitalpulse.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-neon mr-2"></i>
+                            <span class="text-gray-400">(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-neon mr-2"></i>
+                            <span class="text-gray-400">123 Marketing Ave, Suite 100</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700/50 flex items-center justify-center text-gray-400 hover:text-neon hover:border-neon transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700/50 flex items-center justify-center text-gray-400 hover:text-neon hover:border-neon transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700/50 flex items-center justify-center text-gray-400 hover:text-neon hover:border-neon transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700/50 flex items-center justify-center text-gray-400 hover:text-neon hover:border-neon transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-gray-400 mb-2">Subscribe to our newsletter</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="bg-secondary/50 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-neon w-full">
+                            <button class="bg-neon text-primary px-4 py-2 rounded-r-lg font-bold">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800/50 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    © 2023 DigitalPulse Marketing. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-neon transition text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-neon transition text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-neon transition text-sm">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for the download button
+        document.querySelector('.download-btn').addEventListener('click', function() {
+            alert('Thank you for downloading our Digital Marketing Playbook! Your download will start shortly.');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Carousel functionality
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('videoCarousel');
+            const scrollAmount = 300; // Adjust this value to control scroll distance
+            
+            if (direction === 1) {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+        }
+        
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
